@@ -1,16 +1,14 @@
-import React, { useContext, useState } from "react";
-import { AppContext } from "./context";
+import React, { useState } from "react";
 
-export const PostItem = ({ id, title, completed }) => {
-  const { dispatch } = useContext(AppContext);
+export const PostItem = ({
+  id,
+  title,
+  completed,
+  handleDelete,
+  handleUpdate,
+}) => {
   const [isEdit, setIsEdit] = useState(false);
   const [postValue, setPosValue] = useState(title);
-  const handleUpdate = (id, data) => {
-    dispatch({ type: "handleUpdate", id: id, payload: data });
-  };
-  const handleDelete = (id) => {
-    dispatch({ type: "handleDelete", id: id, payload: data });
-  };
 
   const handleChange = (e) => {
     setPosValue(e.target.value);
@@ -37,7 +35,11 @@ export const PostItem = ({ id, title, completed }) => {
           <p>{postValue}</p>
         )}
       </div>
-      <input type="checkbox" checked={completed} onChange={() => {}} />
+      <input
+        type="checkbox"
+        checked={completed}
+        onChange={() => {}}
+      />
       <button onClick={() => handleDelete(id)}>Delete</button>
 
       {isEdit ? (

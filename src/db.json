@@ -1,23 +1,8 @@
 {
   "todos": [
     {
-      "title": "Новая заметкаwd1",
-      "completed": false,
-      "id": 5
-    },
-    {
-      "title": "Новая заметка",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "id": 1,
-      "title": "et po tempa 2",
-      "completed": true
-    },
-    {
       "id": 2,
-      "title": "Автор",
+      "title": "Автор 1",
       "completed": true
     },
     {
@@ -26,11 +11,14 @@
       "completed": true
     },
     {
-      "id": 7,
-      "title": "цв"
+      "title": "Новая за3",
+      "completed": false,
+      "id": 8
     },
     {
-      "id": 8
+      "title": "Новая заметка",
+      "completed": false,
+      "id": 9
     }
   ]
 }

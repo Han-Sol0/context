@@ -1,25 +1,21 @@
+import { AppContext } from "./context";
+import { PostItem } from "./PostItem";
 import { useContext, useState } from "react";
-import { AppContext } from "../context";
-import { PostItem } from "../PostItem";
 
 export const Main = () => {
-  const { data, dispatch } = useContext(AppContext);
-  const [searchQuery, setSearchQuery] = useState("");
-  const sortTodos = () => {
-    dispatch({ type: "sort" });
-  };
-  const createTask = (title, completed) => {
-    dispatch({ type: "createTask", payload: (title, completed) });
-  };
-  const handleSearchQuery = ({ target }) => {
-    dispatch({ type: "search", payload: target.value });
-    setSearchQuery(target.value);
-  };
-
+  const {
+    data,
+    searchQuery,
+    handleSearchQuery,
+    sortTodos,
+    removeTask,
+    updatePost,
+    createTask,
+  } = useContext(AppContext);
   return (
-    <div>
+    <>
       <input
-        placeholder="search"
+        placeholder="Search"
         value={searchQuery}
         onChange={handleSearchQuery}
       />
@@ -28,7 +24,12 @@ export const Main = () => {
         {data.length > 0 ? (
           <div>
             {data.map((post) => (
-              <PostItem key={post.id} {...post} />
+              <PostItem
+                key={post.id}
+                {...post}
+                handleDelete={removeTask}
+                handleUpdate={updatePost}
+              />
             ))}
           </div>
         ) : (
@@ -45,6 +46,6 @@ export const Main = () => {
       >
         Отправить Пост
       </button>
-    </div>
+    </>
   );
 };
